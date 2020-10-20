@@ -1,6 +1,6 @@
 Work hours: 9:00 - 16:30
 
-Trello: 
+Trello: https://trello.com/b/xbUU7BJn/kanban-template
 
 
 Digibooky is going to revolutionize the classic libraries. Users will come to the VR offices where VR headsets are available. 
