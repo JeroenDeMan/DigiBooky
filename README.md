@@ -1,7 +1,7 @@
 Work hours: 9:00 - 16:30
 
 Trello: https://trello.com/b/xbUU7BJn/kanban-template
-
+uml: star uml (programma:https://staruml.io/)
 
 Digibooky is going to revolutionize the classic libraries. Users will come to the VR offices where VR headsets are available. 
 Using these VR headsets, users can roam Digibooky's digital library, where they can make their preferred selection of books to borrow.
