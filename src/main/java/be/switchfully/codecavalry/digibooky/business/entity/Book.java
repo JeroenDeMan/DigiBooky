@@ -3,10 +3,10 @@ package be.switchfully.codecavalry.digibooky.business.entity;
 import java.util.Objects;
 
 public class Book {
-    private Author author;
+    private final Author author;
     private final long isbn;
-    private String title;
-    private String smallSummary;
+    private final String title;
+    private final String smallSummary;
 
     public Book(Author author, long isbn, String title, String smallSummary) {
         this.author = author;

@@ -3,11 +3,10 @@ package be.switchfully.codecavalry.digibooky.business.repository;
 import be.switchfully.codecavalry.digibooky.business.entity.Author;
 import be.switchfully.codecavalry.digibooky.business.entity.Book;
 import be.switchfully.codecavalry.digibooky.service.dto.BookDTO;
+import be.switchfully.codecavalry.digibooky.service.mapper.BookMapper;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -15,6 +14,7 @@ import java.util.stream.Collectors;
 public class BookRepository {
 
     private Map<Long, Book> books;
+    private BookMapper bookMapper;
 
     public BookRepository() {
         this.books = new HashMap<>();
@@ -22,8 +22,8 @@ public class BookRepository {
     }
 
     public Book save(Book book) {
-        if (book == null) throw new IllegalArgumentException("No data provided");
-        if (books.containsValue(book)) throw new IllegalArgumentException(book.getTitle() + " already exists");
+        if (book == null)              throw new BookNotFoundException("No data provided");
+        if (books.containsValue(book)) throw new BookNotFoundException(book.getIsbn() + " already exists");
 
         books.put(book.getIsbn(), book);
         return book;
@@ -40,16 +40,19 @@ public class BookRepository {
     }
 
     public Book getBook(long isbn) {
-        return books.get(isbn);
+        Book book = books.get(isbn);
+        if (Objects.isNull(book)) {
+            throw new BookNotFoundException("There is no book availaible with the isbn number " + isbn);
+        }
+        return book;
     }
 
-    public Book delete(String id) {
-        return books.remove(id);
+    public Book delete(long isbn) {
+        return books.remove(isbn);
     }
 
-//    public List<BookDTO> getBooks() {
-//
-//        return books.values().stream().collect(Collectors.asList)
+    public List<Book> getBooks() {
+        return new ArrayList<>(books.values());
     }
-//}
+}
 

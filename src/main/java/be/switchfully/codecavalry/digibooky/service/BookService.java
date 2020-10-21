@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BookService {
@@ -19,10 +20,11 @@ public class BookService {
         this.bookRepository = bookRepository;
         this.bookmapper = bookmapper;
     }
-//    public List<BookDTO> getAllBooks()
-//    {return bookRepository.getBooks()
-//
-//
-//    }
+    public List<BookDTO> getAllBookDTOs() {
+        return bookRepository.getBooks().stream()
+                             .map(book -> bookmapper.toDTO(book))
+                             .collect(Collectors.toList());
+    }
+
 
 }
