@@ -2,10 +2,13 @@ package be.switchfully.codecavalry.digibooky.business.repository;
 
 import be.switchfully.codecavalry.digibooky.business.entity.Author;
 import be.switchfully.codecavalry.digibooky.business.entity.Book;
+import be.switchfully.codecavalry.digibooky.service.dto.BookDTO;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 
 @Repository
@@ -44,5 +47,9 @@ public class BookRepository {
         return books.remove(id);
     }
 
-}
+//    public List<BookDTO> getBooks() {
+//
+//        return books.values().stream().collect(Collectors.asList)
+    }
+//}
 
