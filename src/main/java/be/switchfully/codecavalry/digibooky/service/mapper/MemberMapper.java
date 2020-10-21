@@ -5,7 +5,9 @@ import be.switchfully.codecavalry.digibooky.service.dto.users.MemberDTO;
 import be.switchfully.codecavalry.digibooky.util.Address;
 import be.switchfully.codecavalry.digibooky.util.MailAddress;
 import be.switchfully.codecavalry.digibooky.util.SocialSecurityNumber;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MemberMapper {
 
     public Member toEntity (MemberDTO memberDTO){
