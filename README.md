@@ -283,3 +283,7 @@ As an accountant I want to mark an invoice as paid so I can keep track of which 
 
 
 ![Story map](Digibooky.png)
+
+## Architecture
+
+![architecture](Architecture.png)
