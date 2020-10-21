@@ -10,9 +10,8 @@ class MailAddressTest {
 
     @Test
     public void givenIncorrectMailAddress_ThrowsIllegalArgumentException(){
-        String incorrectMailAddress = "notCorrect.com";
 
-        Assertions.assertThrows(IllegalArgumentException.class, ()-> MailAddress.isMailAddressValid(incorrectMailAddress));
+        Assertions.assertThrows(IllegalArgumentException.class, ()-> new MailAddress("notCorrect.com"));
 
     }
 

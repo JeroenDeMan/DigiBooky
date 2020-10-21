@@ -20,7 +20,16 @@ public abstract class User {
         this.mailAddress = mailAddress;
     }
 
+    public User(SocialSecurityNumber socialSecurityNumber, String lastname, MailAddress mailAddress) {
+        this.socialSecurityNumber = socialSecurityNumber;
+        this.firstname = "";
+        this.lastname = lastname;
+        this.mailAddress = mailAddress;
+    }
 
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
 
     @Override
     public String toString() {
