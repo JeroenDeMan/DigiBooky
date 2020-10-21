@@ -3,6 +3,8 @@ package be.switchfully.codecavalry.digibooky.service.dto.users;
 import be.switchfully.codecavalry.digibooky.util.MailAddress;
 import be.switchfully.codecavalry.digibooky.util.SocialSecurityNumber;
 
+import java.util.Objects;
+
 public abstract class UserDTO {
 
     private String socialSecurityNumber;
@@ -40,5 +42,19 @@ public abstract class UserDTO {
 
     public void setMailAddress(String mailAddress) {
         this.mailAddress = mailAddress;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserDTO userDTO = (UserDTO) o;
+        return Objects.equals(socialSecurityNumber, userDTO.socialSecurityNumber) &&
+                Objects.equals(mailAddress, userDTO.mailAddress);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(socialSecurityNumber, mailAddress);
     }
 }
