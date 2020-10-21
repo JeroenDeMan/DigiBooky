@@ -8,11 +8,13 @@ public class MailAddress {
     private String mailAddress;
 
     public MailAddress(String mailAddress){
-        isMailAddressValid(mailAddress);
+       if(isMailAddressValid(mailAddress)) {
+           this.mailAddress = mailAddress;
+       }
     }
 
 
-    public void isMailAddressValid(String email)
+     public static boolean isMailAddressValid(String email)
     {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
                 "[a-zA-Z0-9_+&*-]+)*@" +
@@ -22,7 +24,7 @@ public class MailAddress {
         Pattern pat = Pattern.compile(emailRegex);
         if (email == null || !pat.matcher(email).matches())throw new IllegalArgumentException("Not a valid mail address");
 
-        this.mailAddress = email;
+        return true;
     }
 
     @Override
