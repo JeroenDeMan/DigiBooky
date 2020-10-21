@@ -27,6 +27,10 @@ public class MailAddress {
         return true;
     }
 
+    public String getMailAddress() {
+        return mailAddress;
+    }
+
     @Override
     public String toString() {
         return mailAddress;

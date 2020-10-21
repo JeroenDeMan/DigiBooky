@@ -1,10 +1,10 @@
-package be.switchfully.codecavalry.digibooky.business.entity;
+package be.switchfully.codecavalry.digibooky.business.entity.users;
 
 import be.switchfully.codecavalry.digibooky.util.MailAddress;
 import be.switchfully.codecavalry.digibooky.util.SocialSecurityNumber;
 
 import java.util.Objects;
-import java.util.regex.Pattern;
+
 
 public abstract class User {
 
@@ -29,6 +29,22 @@ public abstract class User {
 
     public void setFirstname(String firstname) {
         this.firstname = firstname;
+    }
+
+    public SocialSecurityNumber getSocialSecurityNumber() {
+        return socialSecurityNumber;
+    }
+
+    public MailAddress getMailAddress() {
+        return mailAddress;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
     }
 
     @Override

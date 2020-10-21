@@ -10,6 +10,10 @@ public class SocialSecurityNumber {
         this.socialSecurityNumber = socialSecurityNumber;
     }
 
+    public String getSocialSecurityNumber() {
+        return socialSecurityNumber;
+    }
+
     @Override
     public String toString() {
         return  socialSecurityNumber;

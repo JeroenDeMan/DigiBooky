@@ -15,10 +15,33 @@ public class Address {
         isPostalCodeValid(postalCode);
     }
 
+    public Address(String city, Integer postalCode) {
+        this.street = "";
+        this.streetNumber = "";
+        this.city = city;
+        isPostalCodeValid(postalCode);
+    }
+
     private void isPostalCodeValid(Integer postalCode){
         if(postalCode.toString().length() != 4){
             throw new IllegalArgumentException("Postal code exist of 4 digits");
         } this.postalCode = postalCode;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public Integer getPostalCode() {
+        return postalCode;
     }
 
     @Override
@@ -27,6 +50,6 @@ public class Address {
         stringBuilder.append(street + " " + streetNumber)
                 .append(System.lineSeparator())
                 .append(postalCode + " " + city);
-        return "Address{}";
+        return stringBuilder.toString();
     }
 }
