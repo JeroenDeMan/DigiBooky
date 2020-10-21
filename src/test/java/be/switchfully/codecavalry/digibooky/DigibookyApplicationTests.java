@@ -8,6 +8,7 @@ class DigibookyApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }
