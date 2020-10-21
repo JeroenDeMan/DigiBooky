@@ -280,3 +280,6 @@ As an accountant I want to mark an invoice as paid so I can keep track of which 
 
 ## Possible expansions
 1. Digibooky can offer e-books, DVD's or any other media.
+
+
+![Story map](Digibooky.png)
