@@ -4,20 +4,27 @@ import java.util.Objects;
 
 
     public class BookDTO {
-        private Author author;
+
+        private String authorFirstName;
+        private String authorLastName;
         private final long isbn;
         private String title;
         private String smallSummary;
 
-        public BookDTO(Author author, long isbn, String title, String smallSummary) {
-            this.author = author;
+        public BookDTO(String authorFirstName, String authorLastName, long isbn, String title, String smallSummary) {
+            this.authorFirstName = authorFirstName;
+            this.authorLastName = authorLastName;
             this.isbn = isbn;
             this.title = title;
             this.smallSummary = smallSummary;
         }
 
-        public Author getAuthor() {
-            return author;
+        public String getAuthorFirstName() {
+            return authorFirstName;
+        }
+
+        public String getAuthorLastName() {
+            return authorLastName;
         }
 
         public long getIsbn() {
@@ -38,20 +45,22 @@ import java.util.Objects;
             if (o == null || getClass() != o.getClass()) return false;
             BookDTO bookDTO = (BookDTO) o;
             return isbn == bookDTO.isbn &&
-                    author.equals(bookDTO.author) &&
-                    title.equals(bookDTO.title) &&
-                    smallSummary.equals(bookDTO.smallSummary);
+                    Objects.equals(authorFirstName, bookDTO.authorFirstName) &&
+                    Objects.equals(authorLastName, bookDTO.authorLastName) &&
+                    Objects.equals(title, bookDTO.title) &&
+                    Objects.equals(smallSummary, bookDTO.smallSummary);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(author, isbn, title, smallSummary);
+            return Objects.hash(authorFirstName, authorLastName, isbn, title, smallSummary);
         }
 
         @Override
         public String toString() {
             return "BookDTO{" +
-                    "author=" + author +
+                    "authorFirstName='" + authorFirstName + '\'' +
+                    ", authorLastName='" + authorLastName + '\'' +
                     ", isbn=" + isbn +
                     ", title='" + title + '\'' +
                     ", smallSummary='" + smallSummary + '\'' +

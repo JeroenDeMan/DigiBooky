@@ -19,7 +19,8 @@ class BookMapperTest {
         Book book = bookRepository.getBook(1234567891011L);
         BookDTO bookDTO = bookMapper.toDTO(book);
 
-        Assertions.assertEquals(book.getAuthor(), bookDTO.getAuthor());
+        Assertions.assertEquals(book.getAuthor().getFirstName(), bookDTO.getAuthorFirstName());
+        Assertions.assertEquals(book.getAuthor().getLastName(), bookDTO.getAuthorLastName());
         Assertions.assertEquals(book.getIsbn(), bookDTO.getIsbn());
         Assertions.assertEquals(book.getTitle(), bookDTO.getTitle());
         Assertions.assertEquals(book.getSmallSummary(), bookDTO.getSmallSummary());
@@ -30,12 +31,13 @@ class BookMapperTest {
     void testIfMapperWorksAsItShouldDTOToObject() {
         BookMapper bookMapper = new BookMapper();
 
-        BookDTO bookDTO = new BookDTO(new Author("Pascal", "Baelen"), 1110987654321L, "Java is hot",
+        BookDTO bookDTO = new BookDTO("Pascal", "Baelen", 1110987654321L, "Java is hot",
                 "Talk about anything");
 
         Book book = bookMapper.createBook(bookDTO);
 
-        Assertions.assertEquals(book.getAuthor(), bookDTO.getAuthor());
+        Assertions.assertEquals(book.getAuthor().getFirstName(), bookDTO.getAuthorFirstName());
+        Assertions.assertEquals(book.getAuthor().getLastName(), bookDTO.getAuthorLastName());
         Assertions.assertEquals(book.getIsbn(), bookDTO.getIsbn());
         Assertions.assertEquals(book.getTitle(), bookDTO.getTitle());
         Assertions.assertEquals(book.getSmallSummary(), bookDTO.getSmallSummary());
