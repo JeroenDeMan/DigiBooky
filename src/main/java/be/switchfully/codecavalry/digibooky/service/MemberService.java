@@ -33,4 +33,10 @@ public class MemberService {
                 .map(memberMapper::toDTO)
                 .collect(Collectors.toList());
     }
+
+    public List<MemberDTO> getAllMembersWithRestrictedINSS() {
+        return memberRepository.getMembers().stream()
+                .map(memberMapper::toRestrictedDTO)
+                .collect(Collectors.toList());
+    }
 }

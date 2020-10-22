@@ -17,7 +17,7 @@ public class MemberController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public List<MemberDTO> getAllMembers(){return memberService.getAllMembers();}
+    public List<MemberDTO> getAllMembers(){return memberService.getAllMembersWithRestrictedINSS();}
 
     @Autowired
     public MemberController(MemberService memberService) {

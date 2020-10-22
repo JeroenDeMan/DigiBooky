@@ -55,15 +55,12 @@ public abstract class UserDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserDTO userDTO = (UserDTO) o;
-        return socialSecurityNumber.equals(userDTO.socialSecurityNumber) &&
-                firstName.equals(userDTO.firstName) &&
-                lastName.equals(userDTO.lastName) &&
-                mailAddress.equals(userDTO.mailAddress) &&
-                usertype == userDTO.usertype;
+        return Objects.equals(socialSecurityNumber, userDTO.socialSecurityNumber) &&
+                Objects.equals(mailAddress, userDTO.mailAddress);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(socialSecurityNumber, firstName, lastName, mailAddress, usertype);
+        return Objects.hash(socialSecurityNumber, mailAddress);
     }
 }

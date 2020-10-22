@@ -44,4 +44,20 @@ public class MemberMapper {
 
         return result;
     }
+
+    public MemberDTO toRestrictedDTO(Member member){
+        MemberDTO result = new MemberDTO();
+
+        result.setSocialSecurityNumber("Nice try Karel, you don't have access!");
+        result.setFirstName(member.getFirstname());
+        result.setLastName(member.getLastname());
+        result.setMailAddress(member.getMailAddress().getMailAddress());
+        result.setStreet(member.getAddress().getStreet());
+        result.setStreetNumber(member.getAddress().getStreetNumber());
+        result.setCity(member.getAddress().getCity());
+        result.setPostalCode(member.getAddress().getPostalCode());
+        result.setUsertype(member.getUsertype());
+
+        return result;
+    }
 }
