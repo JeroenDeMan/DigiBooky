@@ -23,8 +23,7 @@ public class MemberMapper {
                 memberDTO.getFirstName(),
                 memberDTO.getLastName(),
                 new MailAddress(memberDTO.getMailAddress()),
-                address,
-                memberDTO.getUsertype()
+                address
         );
 
         return result;
