@@ -7,6 +7,9 @@ import be.switchfully.codecavalry.digibooky.service.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class MemberService {
 
@@ -23,5 +26,11 @@ public class MemberService {
         Member member = memberRepository.save(memberMapper.toEntity(memberDTO));
 
         return memberMapper.toDTO(member);
+    }
+
+    public List<MemberDTO> getAllMembers() {
+        return memberRepository.getMembers().stream()
+                .map(memberMapper::toDTO)
+                .collect(Collectors.toList());
     }
 }

@@ -5,7 +5,9 @@ import be.switchfully.codecavalry.digibooky.exceptions.users.MemberAlreadyExist;
 import be.switchfully.codecavalry.digibooky.util.SocialSecurityNumber;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -24,4 +26,7 @@ public class MemberRepository {
          return member;
     }
 
+    public List<Member> getMembers(){
+        return new ArrayList<>(members.values());
+    }
 }
