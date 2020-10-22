@@ -35,8 +35,11 @@ public class BookRepository {
                 "Java is cool", "Talk about Java");
         Book book2 = new Book(new Author("Pascal", "Baelen"), 1110987654321L,
                 "Java is hot", "Talk about Anything");
+        Book book3 = new Book(new Author("Jeroen", "De Man"), 1000987654321L,
+                "Java is whatever", "Talk about whatever");
         books.put(1234567891011L, book1);
         books.put(1110987654321L, book2);
+        books.put(1000987654321L, book3);
     }
 
     public Book getBook(long isbn) {
@@ -53,6 +56,10 @@ public class BookRepository {
 
     public List<Book> getBooks() {
         return new ArrayList<>(books.values());
+    }
+
+    public Map<Long,Book> getBookMap(){
+        return books;
     }
 }
 
