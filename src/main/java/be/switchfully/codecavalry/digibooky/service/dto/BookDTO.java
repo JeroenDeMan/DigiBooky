@@ -56,16 +56,12 @@ import java.util.Objects;
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             BookDTO bookDTO = (BookDTO) o;
-            return isbn == bookDTO.isbn &&
-                    Objects.equals(authorFirstName, bookDTO.authorFirstName) &&
-                    Objects.equals(authorLastName, bookDTO.authorLastName) &&
-                    Objects.equals(title, bookDTO.title) &&
-                    Objects.equals(smallSummary, bookDTO.smallSummary);
+            return isbn == bookDTO.isbn;
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(authorFirstName, authorLastName, isbn, title, smallSummary);
+            return Objects.hash(isbn);
         }
 
         @Override

@@ -1,4 +1,4 @@
-package be.switchfully.codecavalry.digibooky.business.repository;
+package be.switchfully.codecavalry.digibooky.exceptions.books;
 
 public class BookNotFoundException extends RuntimeException {
     private String errorMessage;

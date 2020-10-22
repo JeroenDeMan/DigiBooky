@@ -2,12 +2,11 @@ package be.switchfully.codecavalry.digibooky.business.repository;
 
 import be.switchfully.codecavalry.digibooky.business.entity.Author;
 import be.switchfully.codecavalry.digibooky.business.entity.Book;
-import be.switchfully.codecavalry.digibooky.service.dto.BookDTO;
+import be.switchfully.codecavalry.digibooky.exceptions.books.BookNotFoundException;
 import be.switchfully.codecavalry.digibooky.service.mapper.BookMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 @Repository

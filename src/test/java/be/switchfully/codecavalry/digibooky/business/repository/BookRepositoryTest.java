@@ -2,12 +2,11 @@ package be.switchfully.codecavalry.digibooky.business.repository;
 
 import be.switchfully.codecavalry.digibooky.business.entity.Author;
 import be.switchfully.codecavalry.digibooky.business.entity.Book;
+import be.switchfully.codecavalry.digibooky.exceptions.books.BookNotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class BookRepositoryTest {
 
@@ -52,7 +51,7 @@ class BookRepositoryTest {
     public void whenAskingForAllBooks_thenSizeOfReturnedCollectionIsTwo () {
         BookRepository bookRepository = new BookRepository();
         List<Book> books = bookRepository.getBooks();
-        final int expectedSize = 2;
+        final int expectedSize = 3;
         Assertions.assertEquals(expectedSize,books.size());
     }
 

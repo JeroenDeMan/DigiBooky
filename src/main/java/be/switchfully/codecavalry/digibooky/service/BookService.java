@@ -1,6 +1,7 @@
 package be.switchfully.codecavalry.digibooky.service;
 
 import be.switchfully.codecavalry.digibooky.business.repository.BookRepository;
+import be.switchfully.codecavalry.digibooky.exceptions.books.BookNotFoundException;
 import be.switchfully.codecavalry.digibooky.service.dto.BookDTO;
 import be.switchfully.codecavalry.digibooky.service.mapper.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class BookService {
 
     }
 
-    public List <BookDTO> getBooksByPartialIsbn(String isbnPartialToCheck) {
+    public List<BookDTO> getBooksByPartialIsbn(String isbnPartialToCheck) {
 
         List<Long> keys =
                 bookRepository.getBookMap()
@@ -44,10 +45,22 @@ public class BookService {
                         .map(isbn -> Long.valueOf(isbn))
                         .collect(Collectors.toList());
 
+        if (keys.isEmpty()) {
+            throw new BookNotFoundException("No book matching input by user");
+        }
+
         List<BookDTO> result = new ArrayList<>();
         for (long isbnkey : keys) {
             result.add(bookmapper.overViewDTO(bookRepository.getBook(isbnkey)));
         }
         return result;
+    }
+
+    public BookRepository getBookRepository() {
+        return bookRepository;
+    }
+
+    public BookMapper getBookmapper() {
+        return bookmapper;
     }
 }
