@@ -2,6 +2,7 @@ package be.switchfully.codecavalry.digibooky.service;
 
 import be.switchfully.codecavalry.digibooky.business.repository.BookRepository;
 import be.switchfully.codecavalry.digibooky.service.dto.BookDTO;
+import be.switchfully.codecavalry.digibooky.service.dto.BookDTOSummier;
 import be.switchfully.codecavalry.digibooky.service.mapper.BookMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -24,8 +25,9 @@ class BookServiceTest {
         BookService bookService = new BookService(new BookRepository(), new BookMapper());
 
         bookService.getBookRepository().save(bookService.getBookmapper().createBook(bookDTO));
-        //System.out.println(bookService.getBooksByPartialIsbn("1109"));
-        Assertions.assertTrue(bookService.getBooksByPartialIsbn("1109").contains(bookDTO));
+        BookDTOSummier summier = bookService.getBookmapper().overviewDTO(bookService.
+                getBookRepository().getBook(1110987654321L));
+        Assertions.assertTrue(bookService.getBooksByPartialIsbn("1109").contains(summier));
     }
 
 }

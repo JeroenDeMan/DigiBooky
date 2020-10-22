@@ -2,6 +2,7 @@ package be.switchfully.codecavalry.digibooky.api;
 
 import be.switchfully.codecavalry.digibooky.service.BookService;
 import be.switchfully.codecavalry.digibooky.service.dto.BookDTO;
+import be.switchfully.codecavalry.digibooky.service.dto.BookDTOSummier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,7 +24,7 @@ public class BookController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public List<BookDTO> getAllBooks() {
+    public List<BookDTOSummier> getAllBooks() {
         return bookService.getAllBookDTOs();
     }
 
@@ -35,7 +36,7 @@ public class BookController {
 
     @GetMapping(path = "/findByIsbn/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public List<BookDTO> bookDTO(@PathVariable String id) {
+    public List<BookDTOSummier> bookDTO(@PathVariable String id) {
         return bookService.getBooksByPartialIsbn(id);
     }
 }

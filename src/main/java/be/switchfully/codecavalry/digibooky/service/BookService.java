@@ -3,6 +3,7 @@ package be.switchfully.codecavalry.digibooky.service;
 import be.switchfully.codecavalry.digibooky.business.repository.BookRepository;
 import be.switchfully.codecavalry.digibooky.exceptions.books.BookNotFoundException;
 import be.switchfully.codecavalry.digibooky.service.dto.BookDTO;
+import be.switchfully.codecavalry.digibooky.service.dto.BookDTOSummier;
 import be.switchfully.codecavalry.digibooky.service.mapper.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,9 +24,9 @@ public class BookService {
         this.bookmapper = bookmapper;
     }
 
-    public List<BookDTO> getAllBookDTOs() {
+    public List<BookDTOSummier> getAllBookDTOs() {
         return bookRepository.getBooks().stream()
-                .map(book -> bookmapper.overViewDTO(book))
+                .map(book -> bookmapper.overviewDTO(book))
                 .collect(Collectors.toList());
     }
 
@@ -34,7 +35,7 @@ public class BookService {
 
     }
 
-    public List<BookDTO> getBooksByPartialIsbn(String isbnPartialToCheck) {
+    public List<BookDTOSummier> getBooksByPartialIsbn(String isbnPartialToCheck) {
 
         List<Long> keys =
                 bookRepository.getBookMap()
@@ -49,9 +50,9 @@ public class BookService {
             throw new BookNotFoundException("No book matching input by user");
         }
 
-        List<BookDTO> result = new ArrayList<>();
+        List<BookDTOSummier> result = new ArrayList<>();
         for (long isbnkey : keys) {
-            result.add(bookmapper.overViewDTO(bookRepository.getBook(isbnkey)));
+            result.add(bookmapper.overviewDTO(bookRepository.getBook(isbnkey)));
         }
         return result;
     }
