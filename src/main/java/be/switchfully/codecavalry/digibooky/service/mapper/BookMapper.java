@@ -18,15 +18,20 @@ public class BookMapper {
                 bookDTO.getSmallSummary());
     }
 
-    public BookDTO toDTO(Book book) {
-        BookDTO result = new BookDTO(
-                book.getAuthor().getFirstName(),
-                book.getAuthor().getLastName(),
-                book.getIsbn(),
-                book.getTitle(),
-                book.getSmallSummary());
+    public BookDTO overViewDTO(Book book) {
+        BookDTO result = new BookDTO();
+        result.setAuthorFirstName(book.getAuthor().getFirstName());
+        result.setAuthorLastName(book.getAuthor().getLastName());
+        result.setIsbn(book.getIsbn());
+        result.setTitle(book.getTitle());
         return result;
 
     }
 
+    public BookDTO detailDTO(Book book) {
+        BookDTO result = overViewDTO(book);
+        result.setSmallSummary(book.getSmallSummary());
+        return result;
+    }
 }
+

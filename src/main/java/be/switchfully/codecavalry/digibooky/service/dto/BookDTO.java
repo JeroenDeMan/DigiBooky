@@ -7,15 +7,27 @@ import java.util.Objects;
 
         private String authorFirstName;
         private String authorLastName;
-        private final long isbn;
+        private long isbn;
         private String title;
         private String smallSummary;
 
-        public BookDTO(String authorFirstName, String authorLastName, long isbn, String title, String smallSummary) {
+        public void setAuthorFirstName(String authorFirstName) {
             this.authorFirstName = authorFirstName;
+        }
+
+        public void setAuthorLastName(String authorLastName) {
             this.authorLastName = authorLastName;
+        }
+
+        public void setIsbn(long isbn) {
             this.isbn = isbn;
+        }
+
+        public void setTitle(String title) {
             this.title = title;
+        }
+
+        public void setSmallSummary(String smallSummary) {
             this.smallSummary = smallSummary;
         }
 

@@ -17,13 +17,13 @@ class BookMapperTest {
         BookMapper bookMapper = new BookMapper();
 
         Book book = bookRepository.getBook(1234567891011L);
-        BookDTO bookDTO = bookMapper.toDTO(book);
+        BookDTO bookDTO = bookMapper.overViewDTO(book);
 
         Assertions.assertEquals(book.getAuthor().getFirstName(), bookDTO.getAuthorFirstName());
         Assertions.assertEquals(book.getAuthor().getLastName(), bookDTO.getAuthorLastName());
         Assertions.assertEquals(book.getIsbn(), bookDTO.getIsbn());
         Assertions.assertEquals(book.getTitle(), bookDTO.getTitle());
-        Assertions.assertEquals(book.getSmallSummary(), bookDTO.getSmallSummary());
+
 
     }
 
@@ -31,9 +31,12 @@ class BookMapperTest {
     void testIfMapperWorksAsItShouldDTOToObject() {
         BookMapper bookMapper = new BookMapper();
 
-        BookDTO bookDTO = new BookDTO("Pascal", "Baelen", 1110987654321L, "Java is hot",
-                "Talk about anything");
-
+        BookDTO bookDTO = new BookDTO();
+        bookDTO.setAuthorFirstName("Pascal");
+        bookDTO.setAuthorLastName("Baelen");
+        bookDTO.setIsbn(1110987654321L);
+        bookDTO.setTitle("Java is hot");
+        bookDTO.setSmallSummary("Talk about anything");
         Book book = bookMapper.createBook(bookDTO);
 
         Assertions.assertEquals(book.getAuthor().getFirstName(), bookDTO.getAuthorFirstName());
@@ -44,5 +47,20 @@ class BookMapperTest {
 
     }
 
+    @Test
+    void testIfmapperGiveDetailOfBook() {
+        BookRepository bookRepository = new BookRepository();
+        BookMapper bookMapper = new BookMapper();
 
-}
+        Book book = bookRepository.getBook(1234567891011L);
+        BookDTO bookDTO = bookMapper.detailDTO(book);
+
+        Assertions.assertEquals(book.getAuthor().getFirstName(), bookDTO.getAuthorFirstName());
+        Assertions.assertEquals(book.getAuthor().getLastName(), bookDTO.getAuthorLastName());
+        Assertions.assertEquals(book.getIsbn(), bookDTO.getIsbn());
+        Assertions.assertEquals(book.getTitle(), bookDTO.getTitle());
+        Assertions.assertEquals(book.getSmallSummary(),bookDTO.getSmallSummary());
+
+
+    }
+    }

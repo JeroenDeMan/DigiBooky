@@ -22,8 +22,13 @@ public class BookService {
     }
     public List<BookDTO> getAllBookDTOs() {
         return bookRepository.getBooks().stream()
-                             .map(book -> bookmapper.toDTO(book))
+                             .map(book -> bookmapper.overViewDTO(book))
                              .collect(Collectors.toList());
+    }
+
+    public BookDTO getBookDetailsById(long isbn) {
+        return bookmapper.detailDTO(bookRepository.getBook(isbn));
+
     }
 
 
