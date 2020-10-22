@@ -9,13 +9,13 @@ public class Member extends User{
     private Address address;
 
 
-    public Member(SocialSecurityNumber socialSecurityNumber, String firstname, String lastname, MailAddress mailAddress, Address address) {
-        super(socialSecurityNumber, firstname, lastname, mailAddress);
+    public Member(SocialSecurityNumber socialSecurityNumber, String firstname, String lastname, MailAddress mailAddress, Address address, Usertype usertype) {
+        super(socialSecurityNumber, firstname, lastname, mailAddress, usertype);
         this.address = address;
     }
 
-    public Member(SocialSecurityNumber socialSecurityNumber, String lastname, MailAddress mailAddress, Address address) {
-        super(socialSecurityNumber, lastname, mailAddress);
+    public Member(SocialSecurityNumber socialSecurityNumber, String lastname, MailAddress mailAddress, Address address, Usertype usertype) {
+        super(socialSecurityNumber, lastname, mailAddress, usertype);
         this.address = address;
     }
 

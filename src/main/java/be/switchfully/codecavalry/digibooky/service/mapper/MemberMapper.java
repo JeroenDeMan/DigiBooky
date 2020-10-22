@@ -1,6 +1,7 @@
 package be.switchfully.codecavalry.digibooky.service.mapper;
 
 import be.switchfully.codecavalry.digibooky.business.entity.users.Member;
+import be.switchfully.codecavalry.digibooky.business.entity.users.Usertype;
 import be.switchfully.codecavalry.digibooky.service.dto.users.MemberDTO;
 import be.switchfully.codecavalry.digibooky.util.Address;
 import be.switchfully.codecavalry.digibooky.util.MailAddress;
@@ -22,7 +23,8 @@ public class MemberMapper {
                 memberDTO.getFirstName(),
                 memberDTO.getLastName(),
                 new MailAddress(memberDTO.getMailAddress()),
-                address
+                address,
+                memberDTO.getUsertype()
         );
 
         return result;
@@ -39,6 +41,7 @@ public class MemberMapper {
         result.setStreetNumber(member.getAddress().getStreetNumber());
         result.setCity(member.getAddress().getCity());
         result.setPostalCode(member.getAddress().getPostalCode());
+        result.setUsertype(member.getUsertype());
 
         return result;
     }

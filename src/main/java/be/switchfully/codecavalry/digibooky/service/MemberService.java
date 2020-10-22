@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class MemberService {
 
-    private MemberRepository memberRepository;
-    private MemberMapper memberMapper;
+    private final MemberRepository memberRepository;
+    private final MemberMapper memberMapper;
 
     @Autowired
     public MemberService(MemberRepository memberRepository, MemberMapper memberMapper) {

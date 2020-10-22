@@ -1,5 +1,6 @@
 package be.switchfully.codecavalry.digibooky.service.dto.users;
 
+import be.switchfully.codecavalry.digibooky.business.entity.users.Usertype;
 import be.switchfully.codecavalry.digibooky.util.MailAddress;
 import be.switchfully.codecavalry.digibooky.util.SocialSecurityNumber;
 
@@ -11,6 +12,7 @@ public abstract class UserDTO {
     private String firstName;
     private String lastName;
     private String mailAddress;
+    private Usertype usertype;
 
     public String getSocialSecurityNumber() {
         return socialSecurityNumber;
@@ -44,17 +46,24 @@ public abstract class UserDTO {
         this.mailAddress = mailAddress;
     }
 
+    public Usertype getUsertype() { return usertype; }
+
+    public void setUsertype(Usertype usertype) { this.usertype = usertype; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserDTO userDTO = (UserDTO) o;
-        return Objects.equals(socialSecurityNumber, userDTO.socialSecurityNumber) &&
-                Objects.equals(mailAddress, userDTO.mailAddress);
+        return socialSecurityNumber.equals(userDTO.socialSecurityNumber) &&
+                firstName.equals(userDTO.firstName) &&
+                lastName.equals(userDTO.lastName) &&
+                mailAddress.equals(userDTO.mailAddress) &&
+                usertype == userDTO.usertype;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(socialSecurityNumber, mailAddress);
+        return Objects.hash(socialSecurityNumber, firstName, lastName, mailAddress, usertype);
     }
 }
