@@ -1,11 +1,14 @@
 package be.switchfully.codecavalry.digibooky.service;
 
+import be.switchfully.codecavalry.digibooky.business.entity.users.Member;
 import be.switchfully.codecavalry.digibooky.business.repository.MemberRepository;
 import be.switchfully.codecavalry.digibooky.service.dto.users.MemberDTO;
 import be.switchfully.codecavalry.digibooky.service.mapper.MemberMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,6 +34,12 @@ class MemberServiceTest {
     @Test
     public void saveMemberDTO_ReturnsSameMemberDTO(){
         Assertions.assertEquals(result, service.save(result));
+    }
+
+    @Test
+    public void WhenCalling_getAllMembers_ReturnListOfMembersDTO() {
+        List<MemberDTO> listOfMembers = service.getAllMembers();
+        Assertions.assertEquals(0, listOfMembers.size());
     }
 
 }
