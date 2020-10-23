@@ -2,7 +2,7 @@ package be.switchfully.codecavalry.digibooky.service.dto;
 
 import java.util.Objects;
 
-public class BookDTOSummier {
+public class BookDTOCompactOverview {
 
 
     private String authorFirstName;
@@ -47,7 +47,7 @@ public class BookDTOSummier {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BookDTOSummier that = (BookDTOSummier) o;
+        BookDTOCompactOverview that = (BookDTOCompactOverview) o;
         return isbn == that.isbn;
     }
 

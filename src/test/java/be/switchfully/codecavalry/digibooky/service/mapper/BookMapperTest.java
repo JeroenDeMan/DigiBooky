@@ -1,14 +1,11 @@
 package be.switchfully.codecavalry.digibooky.service.mapper;
 
-import be.switchfully.codecavalry.digibooky.business.entity.Author;
 import be.switchfully.codecavalry.digibooky.business.entity.Book;
 import be.switchfully.codecavalry.digibooky.business.repository.BookRepository;
 import be.switchfully.codecavalry.digibooky.service.dto.BookDTO;
-import be.switchfully.codecavalry.digibooky.service.dto.BookDTOSummier;
+import be.switchfully.codecavalry.digibooky.service.dto.BookDTOCompactOverview;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class BookMapperTest {
 
@@ -18,7 +15,7 @@ class BookMapperTest {
         BookMapper bookMapper = new BookMapper();
 
         Book book = bookRepository.getBook(1234567891011L);
-        BookDTOSummier bookDTO = bookMapper.overviewDTO(book);
+        BookDTOCompactOverview bookDTO = bookMapper.overviewDTO(book);
 
         Assertions.assertEquals(book.getAuthor().getFirstName(), bookDTO.getAuthorFirstName());
         Assertions.assertEquals(book.getAuthor().getLastName(), bookDTO.getAuthorLastName());

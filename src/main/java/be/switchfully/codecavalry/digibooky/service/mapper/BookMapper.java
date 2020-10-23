@@ -3,7 +3,7 @@ package be.switchfully.codecavalry.digibooky.service.mapper;
 import be.switchfully.codecavalry.digibooky.business.entity.Author;
 import be.switchfully.codecavalry.digibooky.business.entity.Book;
 import be.switchfully.codecavalry.digibooky.service.dto.BookDTO;
-import be.switchfully.codecavalry.digibooky.service.dto.BookDTOSummier;
+import be.switchfully.codecavalry.digibooky.service.dto.BookDTOCompactOverview;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -30,8 +30,8 @@ public class BookMapper {
 
     }
 
-    public BookDTOSummier overviewDTO(Book book) {
-        BookDTOSummier result = new BookDTOSummier();
+    public BookDTOCompactOverview overviewDTO(Book book) {
+        BookDTOCompactOverview result = new BookDTOCompactOverview();
         result.setAuthorFirstName(book.getAuthor().getFirstName());
         result.setAuthorLastName(book.getAuthor().getLastName());
         result.setIsbn(book.getIsbn());
