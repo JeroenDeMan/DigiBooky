@@ -5,23 +5,31 @@ import be.switchfully.codecavalry.digibooky.service.dto.BookDTO;
 import be.switchfully.codecavalry.digibooky.service.dto.BookDTOCompactOverview;
 import be.switchfully.codecavalry.digibooky.service.mapper.BookMapper;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class BookServiceTest {
 
-    @Test
-    void givenPartOfIsbreturnsExpectedBook() {
+    BookDTO bookDTO;
+    BookService bookService;
 
-        BookDTO bookDTO = new BookDTO();
+    @BeforeEach
+    public void setUp() {
+        bookDTO = new BookDTO();
         bookDTO.setAuthorFirstName("Pascal");
         bookDTO.setAuthorLastName("Baelen");
         bookDTO.setIsbn(1110987654321L);
         bookDTO.setTitle("Java is hot");
         bookDTO.setSmallSummary("Talk about anything");
 
-        BookService bookService = new BookService(new BookRepository(), new BookMapper());
+        bookService = new BookService(new BookRepository(), new BookMapper());
 
-        bookService.getBookRepository().save(bookService.getBookmapper().createBook(bookDTO));
+    }
+
+    @Test
+    void givenPartOfIsbreturnsExpectedBook() {
+
+        bookService.registerBook(bookDTO);
 
         BookDTOCompactOverview summier = bookService.getBookmapper().overviewDTO(bookService.
                 getBookRepository().getBook(1110987654321L));
@@ -31,16 +39,8 @@ class BookServiceTest {
 
     @Test
     void givenPartOfTitleReturnsExpectedBook() {
-        BookDTO bookDTO = new BookDTO();
-        bookDTO.setAuthorFirstName("Pascal");
-        bookDTO.setAuthorLastName("Baelen");
-        bookDTO.setIsbn(1110987654321L);
-        bookDTO.setTitle("Java is hot");
-        bookDTO.setSmallSummary("Talk about anything");
 
-        BookService bookService = new BookService(new BookRepository(), new BookMapper());
-
-        bookService.getBookRepository().save(bookService.getBookmapper().createBook(bookDTO));
+        bookService.registerBook(bookDTO);
 
         BookDTOCompactOverview summier = bookService.getBookmapper().overviewDTO(bookService.
                 getBookRepository().getBook(1110987654321L));
@@ -49,49 +49,23 @@ class BookServiceTest {
 
     @Test
     void givenPartOfAuthorReturnsExpectedBook() {
-        BookDTO bookDTO = new BookDTO();
-        bookDTO.setAuthorFirstName("Pascal");
-        bookDTO.setAuthorLastName("Baelen");
-        bookDTO.setIsbn(1110987654321L);
-        bookDTO.setTitle("Java is hot");
-        bookDTO.setSmallSummary("Talk about anything");
 
-        BookService bookService = new BookService(new BookRepository(), new BookMapper());
-
-        bookService.getBookRepository().save(bookService.getBookmapper().createBook(bookDTO));
+        bookService.registerBook(bookDTO);
 
         BookDTOCompactOverview summier = bookService.getBookmapper().overviewDTO(bookService.
                 getBookRepository().getBook(1110987654321L));
         Assertions.assertTrue(bookService.getBookByAuthor("Pas").contains(summier));
 
-
     }
 
     @Test
     void createNewBookReturnsExpectedBook() {
-        BookDTO bookDTO = new BookDTO();
-        bookDTO.setAuthorFirstName("Pascal");
-        bookDTO.setAuthorLastName("Baelen");
-        bookDTO.setIsbn(1110987654321L);
-        bookDTO.setTitle("Java is hot");
-        bookDTO.setSmallSummary("Talk about anything");
-
-        BookService bookService = new BookService(new BookRepository(), new BookMapper());
 
         Assertions.assertEquals(bookDTO, bookService.registerBook(bookDTO));
-
-
-
     }
 
     @Test
     void updateBookReturnsExpectedBook() {
-        BookDTO bookDTO = new BookDTO();
-        bookDTO.setAuthorFirstName("Pascal");
-        bookDTO.setAuthorLastName("Baelen");
-        bookDTO.setIsbn(1110987654321L);
-        bookDTO.setTitle("Java is hot");
-        bookDTO.setSmallSummary("Talk about anything");
 
         BookDTO bookDTO2 = new BookDTO();
         bookDTO2.setAuthorFirstName("Pascal");
@@ -100,7 +74,6 @@ class BookServiceTest {
         bookDTO2.setTitle("Java is chocolat");
         bookDTO2.setSmallSummary("Talk about chocolat");
 
-        BookService bookService = new BookService(new BookRepository(), new BookMapper());
 
         Assertions.assertEquals(bookDTO2.getTitle(), bookService.updateBook(bookDTO.getIsbn(), bookDTO2).getTitle());
 

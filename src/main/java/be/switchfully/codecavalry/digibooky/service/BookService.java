@@ -25,6 +25,14 @@ public class BookService {
         this.bookmapper = bookmapper;
     }
 
+    public BookRepository getBookRepository() {
+        return bookRepository;
+    }
+
+    public BookMapper getBookmapper() {
+        return bookmapper;
+    }
+
     public List<BookDTOCompactOverview> getAllBookDTOs() {
         return bookRepository.getBooks().stream()
                 .map(book -> bookmapper.overviewDTO(book))
@@ -104,11 +112,5 @@ public class BookService {
     }
 
 
-    public BookRepository getBookRepository() {
-        return bookRepository;
-    }
 
-    public BookMapper getBookmapper() {
-        return bookmapper;
-    }
 }
