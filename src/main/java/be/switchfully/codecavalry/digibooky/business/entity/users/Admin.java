@@ -7,14 +7,9 @@ import java.util.List;
 
 public class Admin extends User {
 
-    private List<Member> memberList;
 
     public Admin(SocialSecurityNumber socialSecurityNumber, String firstname, String lastname, MailAddress mailAddress, Usertype usertype) {
         super(socialSecurityNumber, firstname, lastname, mailAddress, usertype);
-    }
-
-    public List<Member> viewMemberList(){
-        return null;
     }
 
 }
