@@ -1,6 +1,7 @@
 package be.switchfully.codecavalry.digibooky.service;
 
 import be.switchfully.codecavalry.digibooky.business.repository.BookRepository;
+import be.switchfully.codecavalry.digibooky.exceptions.books.BookNotFoundException;
 import be.switchfully.codecavalry.digibooky.service.dto.BookDTO;
 import be.switchfully.codecavalry.digibooky.service.dto.BookDTOCompactOverview;
 import be.switchfully.codecavalry.digibooky.service.mapper.BookMapper;
@@ -38,6 +39,15 @@ class BookServiceTest {
     }
 
     @Test
+    void givenPartOfIsbrthatNotExsistsThrowsBookNotFoundException() {
+
+        bookService.registerBook(bookDTO);
+
+        Assertions.assertThrows(BookNotFoundException.class, () -> bookService.
+                getBooksByPartialIsbn("9999"));
+    }
+
+    @Test
     void givenPartOfTitleReturnsExpectedBook() {
 
         bookService.registerBook(bookDTO);
@@ -48,6 +58,25 @@ class BookServiceTest {
     }
 
     @Test
+    void givenPartOfTitlethatNotExsistsThrowsBookNotFoundException() {
+
+        bookService.registerBook(bookDTO);
+
+        Assertions.assertThrows(BookNotFoundException.class, () -> bookService.
+                getBookByTitle(".net is cool"));
+    }
+
+    @Test
+    void givenPartOfTitleReturnsExpectedBookwithCaseSensitivity() {
+
+        bookService.registerBook(bookDTO);
+
+        BookDTOCompactOverview summier = bookService.getBookmapper().overviewDTO(bookService.
+                getBookRepository().getBook(1110987654321L));
+        Assertions.assertTrue(bookService.getBookByTitle("java").contains(summier));
+    }
+
+    @Test
     void givenPartOfAuthorReturnsExpectedBook() {
 
         bookService.registerBook(bookDTO);
@@ -55,6 +84,26 @@ class BookServiceTest {
         BookDTOCompactOverview summier = bookService.getBookmapper().overviewDTO(bookService.
                 getBookRepository().getBook(1110987654321L));
         Assertions.assertTrue(bookService.getBookByAuthor("Pas").contains(summier));
+
+    }
+
+    @Test
+    void givenPartOfAuthorthatNotExsistsThrowsBookNotFoundException() {
+
+        bookService.registerBook(bookDTO);
+
+        Assertions.assertThrows(BookNotFoundException.class, () -> bookService.
+                getBookByAuthor("Alex"));
+    }
+
+    @Test
+    void givenPartOfAuthorReturnsExpectedBookwithCaseSensitivity() {
+
+        bookService.registerBook(bookDTO);
+
+        BookDTOCompactOverview summier = bookService.getBookmapper().overviewDTO(bookService.
+                getBookRepository().getBook(1110987654321L));
+        Assertions.assertTrue(bookService.getBookByAuthor("pas").contains(summier));
 
     }
 
@@ -78,4 +127,6 @@ class BookServiceTest {
         Assertions.assertEquals(bookDTO2.getTitle(), bookService.updateBook(bookDTO.getIsbn(), bookDTO2).getTitle());
 
     }
+
+
 }
