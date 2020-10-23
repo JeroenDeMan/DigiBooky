@@ -8,8 +8,11 @@ import java.util.List;
 public class Admin extends User {
 
 
-    public Admin(SocialSecurityNumber socialSecurityNumber, String firstname, String lastname, MailAddress mailAddress, Usertype usertype) {
-        super(socialSecurityNumber, firstname, lastname, mailAddress, usertype);
+    public Admin(SocialSecurityNumber socialSecurityNumber, String firstname, String lastname, MailAddress mailAddress) {
+        super(socialSecurityNumber, firstname, lastname, mailAddress, Usertype.ADMIN);
     }
 
+    public Admin(SocialSecurityNumber socialSecurityNumber, String lastname, MailAddress mailAddress) {
+        super(socialSecurityNumber, lastname, mailAddress, Usertype.ADMIN);
+    }
 }
