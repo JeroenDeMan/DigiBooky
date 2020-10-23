@@ -1,5 +1,6 @@
 package be.switchfully.codecavalry.digibooky.service;
 
+import be.switchfully.codecavalry.digibooky.business.entity.Book;
 import be.switchfully.codecavalry.digibooky.business.repository.BookRepository;
 import be.switchfully.codecavalry.digibooky.exceptions.books.BookNotFoundException;
 import be.switchfully.codecavalry.digibooky.service.dto.BookDTO;
@@ -56,6 +57,16 @@ public class BookService {
         }
         return result;
     }
+
+    public List<BookDTOCompactOverview> getBookByTitle(String partialTitle) {
+        List<Book> books =
+                bookRepository.getBooks().stream()
+                        .filter(book -> book.getTitle().contains(partialTitle))
+                        .collect(Collectors.toList());
+
+        return books.stream().map(book -> bookmapper.overviewDTO(book)).collect(Collectors.toList());
+    }
+
 
     public BookRepository getBookRepository() {
         return bookRepository;

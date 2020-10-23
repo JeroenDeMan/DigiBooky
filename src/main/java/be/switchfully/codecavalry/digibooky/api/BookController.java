@@ -37,6 +37,12 @@ public class BookController {
     public List<BookDTOCompactOverview> bookDTO(@PathVariable String id) {
         return bookService.getBooksByPartialIsbn(id);
     }
+    @GetMapping(path = "/findByTitle/{title}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public List<BookDTOCompactOverview> getbookbyTitle(@PathVariable String title) {
+        return bookService.getBookByTitle(title);
+    }
+
 }
 
 
