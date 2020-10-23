@@ -2,7 +2,7 @@ package be.switchfully.codecavalry.digibooky.service.dto;
 
 public class LendingDTO {
 
-    private String bookId;
+    private Long bookId;
     private String memberId;
     private String lendingId;
     private String memberName;
@@ -10,11 +10,11 @@ public class LendingDTO {
     private String dateOfLending;
     private String dateOfReturn;
 
-    public String getBookId() {
+    public Long getBookId() {
         return bookId;
     }
 
-    public void setBookId(String bookId) {
+    public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
 
