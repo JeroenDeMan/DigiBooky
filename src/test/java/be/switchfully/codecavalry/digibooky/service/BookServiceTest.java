@@ -63,6 +63,25 @@ class BookServiceTest {
         BookDTOCompactOverview summier = bookService.getBookmapper().overviewDTO(bookService.
                 getBookRepository().getBook(1110987654321L));
         Assertions.assertTrue(bookService.getBookByAuthor("Pas").contains(summier));
+
+
+    }
+
+    @Test
+    void createNewBookReturnsExpectedBook() {
+        BookDTO bookDTO = new BookDTO();
+        bookDTO.setAuthorFirstName("Pascal");
+        bookDTO.setAuthorLastName("Baelen");
+        bookDTO.setIsbn(1110987654321L);
+        bookDTO.setTitle("Java is hot");
+        bookDTO.setSmallSummary("Talk about anything");
+
+        BookService bookService = new BookService(new BookRepository(), new BookMapper());
+
+        Assertions.assertEquals(bookDTO, bookService.registerBook(bookDTO));
+
+
+
     }
 
 }

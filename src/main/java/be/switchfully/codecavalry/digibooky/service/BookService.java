@@ -63,7 +63,9 @@ public class BookService {
                 bookRepository.getBooks().stream()
                         .filter(book -> book.getTitle().toLowerCase().contains(partialTitle.toLowerCase()))
                         .collect(Collectors.toList());
-
+        if (books.isEmpty()) {
+            throw new BookNotFoundException("No book matching by input user");
+        }
         return books.stream().map(book -> bookmapper.overviewDTO(book)).collect(Collectors.toList());
     }
 
@@ -72,8 +74,16 @@ public class BookService {
                 bookRepository.getBooks().stream()
                         .filter(book -> book.getAuthor().getFullName().toLowerCase().contains(partialAuthor.toLowerCase()))
                         .collect(Collectors.toList());
+        if (books.isEmpty()) {
+            throw new BookNotFoundException("No book matching by input user");
+        }
 
         return books.stream().map(book -> bookmapper.overviewDTO(book)).collect(Collectors.toList());
+    }
+
+    public BookDTO registerBook(BookDTO bookDTO) {
+        Book book = bookRepository.save(bookmapper.createBook(bookDTO));
+        return bookmapper.detailDTO(book);
     }
 
     public BookRepository getBookRepository() {

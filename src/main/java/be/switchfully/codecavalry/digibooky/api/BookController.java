@@ -48,6 +48,13 @@ public class BookController {
         return bookService.getBookByAuthor(author);
     }
 
+    @PostMapping(path = "/librarian", produces = MediaType.APPLICATION_JSON_VALUE,
+    consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    public BookDTO createbook(@RequestBody BookDTO bookDTO) {
+        return bookService.registerBook(bookDTO);
+    }
+
 
 }
 
