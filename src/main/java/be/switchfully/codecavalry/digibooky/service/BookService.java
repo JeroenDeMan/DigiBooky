@@ -86,6 +86,19 @@ public class BookService {
         return bookmapper.detailDTO(book);
     }
 
+    public BookDTO updateBook (long isbn, BookDTO bookDTO){
+        if (!bookRepository.getBookMap().containsKey(isbn))
+        {throw new BookNotFoundException("Book with Isbn " + isbn + " not found");}
+
+        Book book = bookRepository.getBook(isbn);
+        book.getAuthor().setFirstName(bookDTO.getAuthorFirstName());
+        book.getAuthor().setLastName(bookDTO.getAuthorLastName());
+        book.setTitle(bookDTO.getTitle());
+        book.setSmallSummary(bookDTO.getSmallSummary());
+        return bookmapper.detailDTO(book);
+    }
+
+
     public BookRepository getBookRepository() {
         return bookRepository;
     }

@@ -84,4 +84,25 @@ class BookServiceTest {
 
     }
 
+    @Test
+    void updateBookReturnsExpectedBook() {
+        BookDTO bookDTO = new BookDTO();
+        bookDTO.setAuthorFirstName("Pascal");
+        bookDTO.setAuthorLastName("Baelen");
+        bookDTO.setIsbn(1110987654321L);
+        bookDTO.setTitle("Java is hot");
+        bookDTO.setSmallSummary("Talk about anything");
+
+        BookDTO bookDTO2 = new BookDTO();
+        bookDTO2.setAuthorFirstName("Pascal");
+        bookDTO2.setAuthorLastName("Baelen");
+        bookDTO2.setIsbn(1110987654321L);
+        bookDTO2.setTitle("Java is chocolat");
+        bookDTO2.setSmallSummary("Talk about chocolat");
+
+        BookService bookService = new BookService(new BookRepository(), new BookMapper());
+
+        Assertions.assertEquals(bookDTO2.getTitle(), bookService.updateBook(bookDTO.getIsbn(), bookDTO2).getTitle());
+
+    }
 }

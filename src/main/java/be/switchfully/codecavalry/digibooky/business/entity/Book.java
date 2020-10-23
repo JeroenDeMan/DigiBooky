@@ -5,13 +5,21 @@ import java.util.Objects;
 public class Book {
     private final Author author;
     private final long isbn;
-    private final String title;
-    private final String smallSummary;
+    private String title;
+    private String smallSummary;
 
     public Book(Author author, long isbn, String title, String smallSummary) {
         this.author = author;
         this.isbn = isbn;
         this.title = title;
+        this.smallSummary = smallSummary;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setSmallSummary(String smallSummary) {
         this.smallSummary = smallSummary;
     }
 

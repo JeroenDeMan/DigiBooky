@@ -55,7 +55,12 @@ public class BookController {
         return bookService.registerBook(bookDTO);
     }
 
-
+    @PutMapping(path = "/librarian/{isbn}", produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public BookDTO updateBook(@PathVariable long isbn, @RequestBody BookDTO bookDTO) {
+        return bookService.updateBook(isbn,bookDTO);
+    }
 }
 
 
