@@ -20,6 +20,9 @@ public class Author {
         return lastName;
     }
 
+    public String getFullName()
+    {return firstName+" "+lastName;}
+
     @Override
     public String toString() {
         return "Author{" +

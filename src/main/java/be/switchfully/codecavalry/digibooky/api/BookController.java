@@ -42,6 +42,12 @@ public class BookController {
     public List<BookDTOCompactOverview> getbookbyTitle(@PathVariable String title) {
         return bookService.getBookByTitle(title);
     }
+    @GetMapping(path = "/findByAuthor/{author}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public List<BookDTOCompactOverview> getbookbyAuthor(@PathVariable String author) {
+        return bookService.getBookByAuthor(author);
+    }
+
 
 }
 

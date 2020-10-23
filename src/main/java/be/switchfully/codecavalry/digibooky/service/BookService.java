@@ -67,6 +67,14 @@ public class BookService {
         return books.stream().map(book -> bookmapper.overviewDTO(book)).collect(Collectors.toList());
     }
 
+    public List<BookDTOCompactOverview> getBookByAuthor(String partialAuthor) {
+        List<Book> books =
+                bookRepository.getBooks().stream()
+                        .filter(book -> book.getAuthor().getFullName().contains(partialAuthor))
+                        .collect(Collectors.toList());
+
+        return books.stream().map(book -> bookmapper.overviewDTO(book)).collect(Collectors.toList());
+    }
 
     public BookRepository getBookRepository() {
         return bookRepository;
