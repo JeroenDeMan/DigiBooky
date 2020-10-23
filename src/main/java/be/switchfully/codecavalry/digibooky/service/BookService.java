@@ -61,7 +61,7 @@ public class BookService {
     public List<BookDTOCompactOverview> getBookByTitle(String partialTitle) {
         List<Book> books =
                 bookRepository.getBooks().stream()
-                        .filter(book -> book.getTitle().contains(partialTitle))
+                        .filter(book -> book.getTitle().toLowerCase().contains(partialTitle.toLowerCase()))
                         .collect(Collectors.toList());
 
         return books.stream().map(book -> bookmapper.overviewDTO(book)).collect(Collectors.toList());
@@ -70,7 +70,7 @@ public class BookService {
     public List<BookDTOCompactOverview> getBookByAuthor(String partialAuthor) {
         List<Book> books =
                 bookRepository.getBooks().stream()
-                        .filter(book -> book.getAuthor().getFullName().contains(partialAuthor))
+                        .filter(book -> book.getAuthor().getFullName().toLowerCase().contains(partialAuthor.toLowerCase()))
                         .collect(Collectors.toList());
 
         return books.stream().map(book -> bookmapper.overviewDTO(book)).collect(Collectors.toList());
