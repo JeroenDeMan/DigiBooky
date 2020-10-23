@@ -13,10 +13,12 @@ import java.util.*;
 public class BookRepository {
 
     private Map<Long, Book> books;
+    private Map<Long, Book> deletedBooks;
     private BookMapper bookMapper;
 
     public BookRepository() {
         this.books = new HashMap<>();
+        this.deletedBooks = new HashMap<>();
         addFirsttwoBooks();
     }
 
@@ -50,7 +52,9 @@ public class BookRepository {
     }
 
     public Book delete(long isbn) {
-        return books.remove(isbn);
+        Book result = books.remove(isbn);
+        deletedBooks.put(result.getIsbn(), result);
+        return result;
     }
 
     public List<Book> getBooks() {
@@ -59,6 +63,10 @@ public class BookRepository {
 
     public Map<Long,Book> getBookMap(){
         return books;
+    }
+
+    public Map<Long, Book> getDeletedBooks(){
+        return deletedBooks;
     }
 }
 

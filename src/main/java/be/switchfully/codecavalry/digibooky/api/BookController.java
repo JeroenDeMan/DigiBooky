@@ -61,6 +61,12 @@ public class BookController {
     public BookDTO updateBook(@PathVariable long isbn, @RequestBody BookDTO bookDTO) {
         return bookService.updateBook(isbn,bookDTO);
     }
+
+    @DeleteMapping(path = "/librarian/{isbn}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public BookDTOCompactOverview deleteBook(@PathVariable long isbn) {
+        return bookService.deleteBook(isbn);
+    }
 }
 
 
