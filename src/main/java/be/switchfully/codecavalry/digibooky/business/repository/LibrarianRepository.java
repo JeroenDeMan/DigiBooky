@@ -1,9 +1,7 @@
 package be.switchfully.codecavalry.digibooky.business.repository;
 
 import be.switchfully.codecavalry.digibooky.business.entity.users.Librarian;
-import be.switchfully.codecavalry.digibooky.business.entity.users.Member;
 import be.switchfully.codecavalry.digibooky.exceptions.users.LibrarianAlreadyExistException;
-import be.switchfully.codecavalry.digibooky.exceptions.users.MemberAlreadyExist;
 import be.switchfully.codecavalry.digibooky.util.SocialSecurityNumber;
 import org.springframework.stereotype.Repository;
 

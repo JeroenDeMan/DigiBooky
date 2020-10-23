@@ -1,9 +1,7 @@
 package be.switchfully.codecavalry.digibooky.api;
 
 import be.switchfully.codecavalry.digibooky.service.AdminService;
-import be.switchfully.codecavalry.digibooky.service.LibrarianService;
 import be.switchfully.codecavalry.digibooky.service.dto.users.AdminDTO;
-import be.switchfully.codecavalry.digibooky.service.dto.users.LibrarianDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

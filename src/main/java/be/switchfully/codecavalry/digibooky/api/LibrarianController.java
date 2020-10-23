@@ -26,7 +26,7 @@ public class LibrarianController {
         return librarianService.getAllLibrarians();
     }
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/admin", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public LibrarianDTO save(@RequestBody LibrarianDTO librarianDTO) {
         return librarianService.save(librarianDTO);

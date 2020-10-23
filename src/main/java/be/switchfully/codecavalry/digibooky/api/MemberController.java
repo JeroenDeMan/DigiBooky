@@ -15,7 +15,7 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/admin", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<MemberDTO> getAllMembers(){return memberService.getAllMembersWithRestrictedINSS();}
 
