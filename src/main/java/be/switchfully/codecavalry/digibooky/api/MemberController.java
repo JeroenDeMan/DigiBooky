@@ -15,14 +15,14 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @GetMapping(path = "/admin", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public List<MemberDTO> getAllMembers(){return memberService.getAllMembersWithRestrictedINSS();}
-
     @Autowired
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
+
+    @GetMapping(path = "/admin", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public List<MemberDTO> getAllMembers(){return memberService.getAllMembersWithRestrictedINSS();}
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)

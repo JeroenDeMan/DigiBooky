@@ -2,6 +2,7 @@ package be.switchfully.codecavalry.digibooky.service.mapper;
 
 import be.switchfully.codecavalry.digibooky.business.entity.Library.Lending;
 import be.switchfully.codecavalry.digibooky.service.dto.LendingDTO;
+import be.switchfully.codecavalry.digibooky.util.DateFormat;
 import be.switchfully.codecavalry.digibooky.util.SocialSecurityNumber;
 import org.springframework.stereotype.Component;
 
@@ -19,8 +20,8 @@ public class LendingMapper {
         result.setLendingId(lending.getId());
         result.setBookId(lending.getIsbn());
         result.setMemberId(lending.getMemberId().getSocialSecurityNumber());
-        result.setDateOfLending(lending.getDateOfLending().toString());
-        result.setDateOfReturn(lending.getDateOfReturning().toString());
+        result.setDateOfLending(lending.getDateOfLending().format(DateFormat.getFormat()));
+        result.setDateOfReturn(lending.getDateOfReturning().format(DateFormat.getFormat()));
         return result;
     }
 
