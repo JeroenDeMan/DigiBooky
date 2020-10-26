@@ -4,6 +4,7 @@ import be.switchfully.codecavalry.digibooky.business.entity.users.Member;
 import be.switchfully.codecavalry.digibooky.business.repository.MemberRepository;
 import be.switchfully.codecavalry.digibooky.service.dto.users.MemberDTO;
 import be.switchfully.codecavalry.digibooky.service.mapper.MemberMapper;
+import be.switchfully.codecavalry.digibooky.util.SocialSecurityNumber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,5 +39,10 @@ public class MemberService {
         return memberRepository.getMembers().stream()
                 .map(memberMapper::toRestrictedDTO)
                 .collect(Collectors.toList());
+    }
+
+    public MemberDTO getOneMemberByInss(SocialSecurityNumber socialSecurityNumber)
+    {
+        return memberMapper.toDTO(memberRepository.getMemberMap().get(socialSecurityNumber));
     }
 }

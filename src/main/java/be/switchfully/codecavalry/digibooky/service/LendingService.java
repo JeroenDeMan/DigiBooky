@@ -7,8 +7,12 @@ import be.switchfully.codecavalry.digibooky.service.dto.BookDTO;
 import be.switchfully.codecavalry.digibooky.service.dto.LendingDTO;
 import be.switchfully.codecavalry.digibooky.service.dto.users.MemberDTO;
 import be.switchfully.codecavalry.digibooky.service.mapper.LendingMapper;
+import be.switchfully.codecavalry.digibooky.util.SocialSecurityNumber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -28,8 +32,9 @@ public class LendingService {
     }
 
     private LendingDTO addMemberName(LendingDTO lendingDTO) {
-      //MemberDTO member = memberService.g
-        return null;
+        MemberDTO member = memberService.getOneMemberByInss(new SocialSecurityNumber(lendingDTO.getMemberId()));
+        lendingDTO.setMemberName(member.getFirstName()+" "+member.getLastName());
+        return lendingDTO;
     }
 
     private LendingDTO addBookTitle(LendingDTO lendingDTO) {
@@ -44,5 +49,12 @@ public class LendingService {
         result = addMemberName(result);
         result = addBookTitle(result);
         return result;
+    }
+
+    public List<LendingDTO> getAllLends ()
+    {
+        return lendingRepository.getLends().stream()
+                                .map(lending -> lendingMapper.toDTO(lending))
+                                .collect(Collectors.toList());
     }
 }
