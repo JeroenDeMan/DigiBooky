@@ -3,6 +3,7 @@ package be.switchfully.codecavalry.digibooky.business.entity.Library;
 import be.switchfully.codecavalry.digibooky.util.SocialSecurityNumber;
 
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.UUID;
 
 public class Lending {
@@ -40,5 +41,18 @@ public class Lending {
 
     public LocalDate getDateOfReturning() {
         return dateOfReturning;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Lending lending = (Lending) o;
+        return Objects.equals(Id, lending.Id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Id);
     }
 }
