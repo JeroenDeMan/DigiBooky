@@ -39,7 +39,7 @@ class MemberServiceTest {
     @Test
     public void WhenCalling_getAllMembers_ReturnListOfMembersDTO() {
         List<MemberDTO> listOfMembers = service.getAllMembers();
-        Assertions.assertEquals(0, listOfMembers.size());
+        Assertions.assertEquals(1, listOfMembers.size());
     }
 
 }

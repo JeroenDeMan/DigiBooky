@@ -55,6 +55,8 @@ public class LendingService {
     {
         return lendingRepository.getLends().stream()
                                 .map(lending -> lendingMapper.toDTO(lending))
+                                .map(lendingDTO -> addBookTitle(lendingDTO))
+                                .map(lendingDTO -> addMemberName(lendingDTO))
                                 .collect(Collectors.toList());
     }
 }

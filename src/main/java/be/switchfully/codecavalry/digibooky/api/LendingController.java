@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/lendings")
 public class LendingController {
@@ -16,6 +18,12 @@ public class LendingController {
     @Autowired
     public LendingController(LendingService lendingService) {
         this.lendingService = lendingService;
+    }
+
+    @GetMapping (path = "/librarian")
+    @ResponseStatus(HttpStatus.OK)
+    public List<LendingDTO> getAllLends (){
+        return lendingService.getAllLends();
     }
 
     @PostMapping(path = "/member", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
