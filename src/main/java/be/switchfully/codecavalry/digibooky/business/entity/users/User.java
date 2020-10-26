@@ -66,14 +66,13 @@ public abstract class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) &&
-                Objects.equals(socialSecurityNumber, user.socialSecurityNumber) &&
+        return Objects.equals(socialSecurityNumber, user.socialSecurityNumber) &&
                 Objects.equals(mailAddress, user.mailAddress);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, socialSecurityNumber, mailAddress);
+        return Objects.hash(socialSecurityNumber, mailAddress);
     }
 
     @Override

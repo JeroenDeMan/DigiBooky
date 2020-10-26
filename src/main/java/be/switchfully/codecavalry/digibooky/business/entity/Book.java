@@ -15,6 +15,13 @@ public class Book {
         this.smallSummary = smallSummary;
     }
 
+    public Book(Author author, long isbn, String title) {
+        this.author = author;
+        this.isbn = isbn;
+        this.title = title;
+        this.smallSummary = "NOT PROVIDED";
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }

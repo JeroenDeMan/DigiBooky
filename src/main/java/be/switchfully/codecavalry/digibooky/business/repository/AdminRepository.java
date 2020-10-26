@@ -1,7 +1,7 @@
 package be.switchfully.codecavalry.digibooky.business.repository;
 
 import be.switchfully.codecavalry.digibooky.business.entity.users.Admin;
-import be.switchfully.codecavalry.digibooky.exceptions.users.AdminAlreadyExistException;
+import be.switchfully.codecavalry.digibooky.exceptions.users.AdminAlreadyExistsException;
 import be.switchfully.codecavalry.digibooky.util.MailAddress;
 import be.switchfully.codecavalry.digibooky.util.SocialSecurityNumber;
 import org.springframework.stereotype.Repository;
@@ -23,7 +23,7 @@ public class AdminRepository {
 
     public Admin save(Admin admin) {
         if (admins.containsValue(admin))
-            throw new AdminAlreadyExistException((admin.getFirstname() + admin.getLastname()));
+            throw new AdminAlreadyExistsException((admin.getFirstname()+ " " + admin.getLastname()));
         admins.put(admin.getId(), admin);
 
         return admin;

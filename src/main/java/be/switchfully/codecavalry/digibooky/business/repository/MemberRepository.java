@@ -1,9 +1,7 @@
 package be.switchfully.codecavalry.digibooky.business.repository;
 
-import be.switchfully.codecavalry.digibooky.business.entity.Author;
-import be.switchfully.codecavalry.digibooky.business.entity.Book;
 import be.switchfully.codecavalry.digibooky.business.entity.users.Member;
-import be.switchfully.codecavalry.digibooky.exceptions.users.MemberAlreadyExist;
+import be.switchfully.codecavalry.digibooky.exceptions.users.MemberAlreadyExistsException;
 import be.switchfully.codecavalry.digibooky.util.Address;
 import be.switchfully.codecavalry.digibooky.util.MailAddress;
 import be.switchfully.codecavalry.digibooky.util.SocialSecurityNumber;
@@ -32,7 +30,7 @@ public class MemberRepository {
     }
 
     public Member save(Member member){
-        if(members.containsValue(member)) throw new MemberAlreadyExist(member.getFirstname() + member.getLastname());
+        if(members.containsValue(member)) throw new MemberAlreadyExistsException(member.getFirstname() + " " + member.getLastname());
          members.put(member.getId(), member);
 
          return member;

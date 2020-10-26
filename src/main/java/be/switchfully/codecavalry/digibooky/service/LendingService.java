@@ -59,4 +59,14 @@ public class LendingService {
                                 .map(lendingDTO -> addMemberName(lendingDTO))
                                 .collect(Collectors.toList());
     }
+
+    public List<LendingDTO> getAllLendsForSpecificMember(String id){
+        return lendingRepository.getLends()
+                                .stream()
+                                .filter(lends -> lends.getMemberId().equals(id))
+                                .map(lends -> lendingMapper.toDTO(lends))
+                                .map(lends -> addBookTitle(lends))
+                                .map(lends -> addMemberName(lends))
+                                .collect(Collectors.toList());
+    }
 }

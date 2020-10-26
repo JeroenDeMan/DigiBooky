@@ -1,7 +1,7 @@
 package be.switchfully.codecavalry.digibooky.business.repository;
 
 import be.switchfully.codecavalry.digibooky.business.entity.users.Admin;
-import be.switchfully.codecavalry.digibooky.exceptions.users.AdminAlreadyExistException;
+import be.switchfully.codecavalry.digibooky.exceptions.users.AdminAlreadyExistsException;
 import be.switchfully.codecavalry.digibooky.util.MailAddress;
 import be.switchfully.codecavalry.digibooky.util.SocialSecurityNumber;
 import org.junit.jupiter.api.Assertions;
@@ -33,7 +33,7 @@ class AdminRepositoryTest {
     @Test
     public void adminAlreadyExist_ThrowsAdminAlreadyExistException(){
         repository.save(admin);
-        Assertions.assertThrows(AdminAlreadyExistException.class, ()-> repository.save(admin));
+        Assertions.assertThrows(AdminAlreadyExistsException.class, ()-> repository.save(admin));
 
     }
 

@@ -55,6 +55,12 @@ public class BookRepository {
         return result;
     }
 
+    public Book retrieveDeletedBook(long isbn){
+        Book result = deletedBooks.remove(isbn);
+        books.put(result.getIsbn(), result);
+        return result;
+    }
+
     public List<Book> getBooks() {
         return new ArrayList<>(books.values());
     }

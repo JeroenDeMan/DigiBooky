@@ -61,8 +61,15 @@ class LendingServiceTest {
     }
 
     @Test
-    public void getAllLendsBooks() {
+    public void getAllLendsBooks_containsSavedLandingDTO() {
         LendingDTO result = lendingService.lendABook(lendingDTO);
         Assertions.assertTrue(lendingService.getAllLends().contains(result));
+    }
+
+    @Test
+    public void getAllLendsForASpecificMember_returnsExpectedBook(){
+        LendingDTO result = lendingService.lendABook(lendingDTO);
+        Assertions.assertEquals(1, lendingService.getAllLendsForSpecificMember(member.getId()).size());
+        Assertions.assertTrue(lendingService.getAllLendsForSpecificMember(member.getId()).contains(result));
     }
 }

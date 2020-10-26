@@ -12,6 +12,11 @@ public class Author {
         this.lastName = lastName;
     }
 
+    public Author(String lastName) {
+        this.firstName = "NOT PROVIDED";
+        this.lastName = lastName;
+    }
+
     public String getFirstName() {
         return firstName;
     }

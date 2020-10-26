@@ -55,4 +55,44 @@ class BookRepositoryTest {
         Assertions.assertEquals(expectedSize,books.size());
     }
 
+
+    @Test
+    public void whenBookIsDeleted_itsNotLongerInTheRepository(){
+        BookRepository bookRepository = new BookRepository();
+        bookRepository.delete(1234567891011L);
+
+        Assertions.assertFalse(bookRepository.getBookMap().containsKey(1234567891011L));
+    }
+
+    @Test
+    public void whenBookIsDeleted_itsAddToDeletedRepositoryMap(){
+        BookRepository bookRepository = new BookRepository();
+        bookRepository.delete(1234567891011L);
+
+        Assertions.assertTrue(bookRepository.getDeletedBooks().containsKey(1234567891011L));
+    }
+
+    @Test
+    public void whenDeleteBookActionWasNotCorrectAndReversed_bookIsAddedBackToRegularRepositoryMap(){
+        BookRepository bookRepository = new BookRepository();
+        bookRepository.delete(1234567891011L);
+
+        Assertions.assertFalse(bookRepository.getBookMap().containsKey(1234567891011L));
+        bookRepository.retrieveDeletedBook(1234567891011L);
+        Assertions.assertTrue(bookRepository.getBookMap().containsKey(1234567891011L));
+
+    }
+
+    @Test
+    public void whenDeleteBookActionWasNotCorrectAndReversed_bookIsRemovedFromDeletedRepositoryMap() {
+        BookRepository bookRepository = new BookRepository();
+        bookRepository.delete(1234567891011L);
+
+        Assertions.assertTrue(bookRepository.getDeletedBooks().containsKey(1234567891011L));
+
+        bookRepository.retrieveDeletedBook(1234567891011L);
+
+        Assertions.assertFalse(bookRepository.getDeletedBooks().containsKey(1234567891011L));
+    }
+
 }

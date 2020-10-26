@@ -12,8 +12,8 @@ public class Lending {
     private final String Id;
     private final String memberId;
     private final Long isbn;
-    private LocalDate dateOfLending;
-    private LocalDate dateOfReturning;
+    private final LocalDate dateOfLending;
+    private final LocalDate dateOfReturning;
 
     public Lending(String memberId, Long isbn) {
         this.Id = UUID.randomUUID().toString();

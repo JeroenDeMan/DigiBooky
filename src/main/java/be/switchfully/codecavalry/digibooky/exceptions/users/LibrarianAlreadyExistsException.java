@@ -1,10 +1,10 @@
 package be.switchfully.codecavalry.digibooky.exceptions.users;
 
-public class AdminAlreadyExistException extends RuntimeException {
+public class LibrarianAlreadyExistsException extends RuntimeException {
 
     String message;
 
-    public AdminAlreadyExistException(String message) {
+    public LibrarianAlreadyExistsException(String message) {
         this.message = message;
     }
 

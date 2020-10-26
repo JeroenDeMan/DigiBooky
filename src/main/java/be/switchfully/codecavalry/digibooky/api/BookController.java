@@ -69,6 +69,12 @@ public class BookController {
     public BookDTOCompactOverview deleteBook(@PathVariable long isbn) {
         return bookService.deleteBook(isbn);
     }
+
+    @DeleteMapping(path = "/librarian/retrieve/{isbn}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
+    public BookDTOCompactOverview retrieveDeletedBook(@PathVariable long isbn) {
+        return bookService.retrieveDeletedBook(isbn);
+    }
 }
 
 

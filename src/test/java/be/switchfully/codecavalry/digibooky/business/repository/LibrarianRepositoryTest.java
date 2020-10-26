@@ -1,7 +1,7 @@
 package be.switchfully.codecavalry.digibooky.business.repository;
 
 import be.switchfully.codecavalry.digibooky.business.entity.users.Librarian;
-import be.switchfully.codecavalry.digibooky.exceptions.users.LibrarianAlreadyExistException;
+import be.switchfully.codecavalry.digibooky.exceptions.users.LibrarianAlreadyExistsException;
 import be.switchfully.codecavalry.digibooky.util.MailAddress;
 import be.switchfully.codecavalry.digibooky.util.SocialSecurityNumber;
 import org.junit.jupiter.api.Assertions;
@@ -34,7 +34,7 @@ class LibrarianRepositoryTest {
     @Test
     public void librarianAlreadyExist_ThrowsLibrarianAlreadyExistException(){
         repository.save(librarian);
-        Assertions.assertThrows(LibrarianAlreadyExistException.class, ()-> repository.save(librarian));
+        Assertions.assertThrows(LibrarianAlreadyExistsException.class, ()-> repository.save(librarian));
 
     }
 

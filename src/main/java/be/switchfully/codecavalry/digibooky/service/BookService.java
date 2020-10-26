@@ -92,7 +92,7 @@ public class BookService {
     }
 
     public BookDTO updateBook(long isbn, BookDTO bookDTO) {
-        if (!bookRepository.getBookMap().containsKey(isbn)) throw new BookNotFoundException("Book with Isbn " + isbn + " not found");
+        if (!bookRepository.getBookMap().containsKey(isbn)) throw new BookNotFoundException("Book with Isbn " + isbn );
 
         Book book = bookRepository.getBook(isbn);
         book.getAuthor().setFirstName(bookDTO.getAuthorFirstName());
@@ -103,7 +103,15 @@ public class BookService {
     }
 
     public BookDTOCompactOverview deleteBook(long isbn) {
+        if (!bookRepository.getBookMap().containsKey(isbn)) throw new BookNotFoundException("Book with Isbn " + isbn);
+
         return bookMapper.overviewDTO(bookRepository.delete(isbn));
+    }
+
+    public BookDTOCompactOverview retrieveDeletedBook(long isbn){
+        if (!bookRepository.getDeletedBooks().containsKey(isbn)) throw new BookNotFoundException("Book with Isbn " + isbn );
+
+        return bookMapper.overviewDTO(bookRepository.retrieveDeletedBook(isbn));
     }
 
 
