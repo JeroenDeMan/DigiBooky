@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class LendingMapper {
 
     public Lending toEntity(LendingDTO lendingDTO) {
-        Lending result = new Lending(new SocialSecurityNumber(lendingDTO.getMemberId()), lendingDTO.getBookId());
+        Lending result = new Lending(lendingDTO.getMemberId(), lendingDTO.getBookId());
 
         return result;
     }
@@ -19,7 +19,7 @@ public class LendingMapper {
     {   LendingDTO result = new LendingDTO();
         result.setLendingId(lending.getId());
         result.setBookId(lending.getIsbn());
-        result.setMemberId(lending.getMemberId().getSocialSecurityNumber());
+        result.setMemberId(lending.getMemberId());
         result.setDateOfLending(lending.getDateOfLending().format(DateFormat.getFormat()));
         result.setDateOfReturn(lending.getDateOfReturning().format(DateFormat.getFormat()));
         return result;

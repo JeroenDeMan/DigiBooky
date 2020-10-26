@@ -14,7 +14,7 @@ import java.util.Map;
 @Repository
 public class AdminRepository {
 
-    private final Map<SocialSecurityNumber, Admin> admins;
+    private final Map<String, Admin> admins;
 
     public AdminRepository() {
         this.admins = new HashMap<>();
@@ -24,13 +24,14 @@ public class AdminRepository {
     public Admin save(Admin admin) {
         if (admins.containsValue(admin))
             throw new AdminAlreadyExistException((admin.getFirstname() + admin.getLastname()));
-        admins.put(admin.getSocialSecurityNumber(), admin);
+        admins.put(admin.getId(), admin);
 
         return admin;
     }
 
     public void addFirstAdmin(){
-        admins.put(new SocialSecurityNumber("1342549-325-15"), new Admin(new SocialSecurityNumber("1342549-325-15"), "Adrie", "Admin", new MailAddress("adrie@admin.be")));
+        Admin admin = new Admin(new SocialSecurityNumber("1342549-325-15"), "Adrie", "Admin", new MailAddress("adrie@admin.be"));
+        admins.put(admin.getId(), admin);
     }
 
     public List<Admin> getAdmins() {

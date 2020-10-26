@@ -41,8 +41,8 @@ public class MemberService {
                 .collect(Collectors.toList());
     }
 
-    public MemberDTO getOneMemberByInss(SocialSecurityNumber socialSecurityNumber)
+    public MemberDTO getOneMemberByInss(String id)
     {
-        return memberMapper.toDTO(memberRepository.getMemberMap().get(socialSecurityNumber));
+        return memberMapper.toDTO(memberRepository.getMemberMap().get(id));
     }
 }

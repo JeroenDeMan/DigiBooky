@@ -3,7 +3,6 @@ package be.switchfully.codecavalry.digibooky.business.repository;
 import be.switchfully.codecavalry.digibooky.business.entity.Author;
 import be.switchfully.codecavalry.digibooky.business.entity.Book;
 import be.switchfully.codecavalry.digibooky.exceptions.books.BookNotFoundException;
-import be.switchfully.codecavalry.digibooky.service.mapper.BookMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
@@ -14,12 +13,11 @@ public class BookRepository {
 
     private Map<Long, Book> books;
     private Map<Long, Book> deletedBooks;
-    private BookMapper bookMapper;
 
     public BookRepository() {
         this.books = new HashMap<>();
         this.deletedBooks = new HashMap<>();
-        addFirsttwoBooks();
+        addFirstThreeBooks();
     }
 
     public Book save(Book book) {
@@ -31,7 +29,7 @@ public class BookRepository {
 
     }
 
-    public void addFirsttwoBooks() {
+    public void addFirstThreeBooks() {
         Book book1 = new Book(new Author("Gunther", "Lippens"), 1234567891011L,
                 "Java is cool", "Talk about Java");
         Book book2 = new Book(new Author("Pascal", "Baelen"), 1110987654321L,
@@ -46,7 +44,7 @@ public class BookRepository {
     public Book getBook(long isbn) {
         Book book = books.get(isbn);
         if (Objects.isNull(book)) {
-            throw new BookNotFoundException("There is no book availaible with the isbn number " + isbn);
+            throw new BookNotFoundException("There is no book available with the isbn number " + isbn);
         }
         return book;
     }

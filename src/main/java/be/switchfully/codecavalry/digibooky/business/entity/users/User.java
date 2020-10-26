@@ -4,18 +4,21 @@ import be.switchfully.codecavalry.digibooky.util.MailAddress;
 import be.switchfully.codecavalry.digibooky.util.SocialSecurityNumber;
 
 import java.util.Objects;
+import java.util.UUID;
 
 
 public abstract class User {
 
+    private final String id;
     private final SocialSecurityNumber socialSecurityNumber;
     private MailAddress mailAddress;
     private String firstname;
     private final String lastname;
-    private Usertype usertype;
+    private final Usertype usertype;
 
 
     public User(SocialSecurityNumber socialSecurityNumber, String firstname, String lastname, MailAddress mailAddress, Usertype usertype) {
+        this.id = UUID.randomUUID().toString();
         this.socialSecurityNumber = socialSecurityNumber;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -24,8 +27,9 @@ public abstract class User {
     }
 
     public User(SocialSecurityNumber socialSecurityNumber, String lastname, MailAddress mailAddress, Usertype usertype) {
+        this.id = UUID.randomUUID().toString();
         this.socialSecurityNumber = socialSecurityNumber;
-        this.firstname = "";
+        this.firstname = "NOT PROVIDED";
         this.lastname = lastname;
         this.mailAddress = mailAddress;
         this.usertype = usertype;
@@ -53,27 +57,30 @@ public abstract class User {
 
     public Usertype getUsertype() { return usertype; }
 
+    public String getId() {
+        return id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return socialSecurityNumber.equals(user.socialSecurityNumber) &&
-                mailAddress.equals(user.mailAddress) &&
-                firstname.equals(user.firstname) &&
-                lastname.equals(user.lastname) &&
-                usertype == user.usertype;
+        return Objects.equals(id, user.id) &&
+                Objects.equals(socialSecurityNumber, user.socialSecurityNumber) &&
+                Objects.equals(mailAddress, user.mailAddress);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(socialSecurityNumber, mailAddress, firstname, lastname, usertype);
+        return Objects.hash(id, socialSecurityNumber, mailAddress);
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "socialSecurityNumber=" + socialSecurityNumber +
+                "id='" + id + '\'' +
+                ", socialSecurityNumber=" + socialSecurityNumber +
                 ", mailAddress=" + mailAddress +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +

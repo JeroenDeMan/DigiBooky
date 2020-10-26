@@ -21,7 +21,7 @@ public class AdminMapper {
 
     public AdminDTO toDTO(Admin admin) {
         AdminDTO result = new AdminDTO();
-
+        result.setId(admin.getId());
         result.setSocialSecurityNumber(admin.getSocialSecurityNumber().getSocialSecurityNumber());
         result.setFirstName(admin.getFirstname());
         result.setLastName(admin.getLastname());

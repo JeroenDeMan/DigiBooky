@@ -29,7 +29,7 @@ class AddressTest {
     @Test
     public void correctAddressWithoutStreet_EqualsToString(){
         StringBuilder expectedResult = new StringBuilder();
-        expectedResult.append(" ")
+        expectedResult.append("NOT PROVIDED NOT PROVIDED")
                 .append(System.lineSeparator())
                 .append("2147 Lokeren");
 

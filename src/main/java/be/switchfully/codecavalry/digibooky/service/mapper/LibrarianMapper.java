@@ -22,7 +22,7 @@ public class LibrarianMapper {
 
     public LibrarianDTO toDTO(Librarian librarian) {
         LibrarianDTO result = new LibrarianDTO();
-
+        result.setId(librarian.getId());
         result.setSocialSecurityNumber(librarian.getSocialSecurityNumber().getSocialSecurityNumber());
         result.setFirstName(librarian.getFirstname());
         result.setLastName(librarian.getLastname());

@@ -17,17 +17,11 @@ public class LendingRepository {
 
     public LendingRepository() {
         lends = new HashMap<>();
-        addFirstLending();
     }
 
     public Lending lendABook(Lending lending) {
         lends.put(lending.getId(), lending);
         return lending;
-    }
-
-    public void addFirstLending() {
-        Lending lending = new Lending(new SocialSecurityNumber("671220-333-73"), 1234567891011L);
-        lends.put(lending.getId(), lending);
     }
 
     public List<Lending> getLends() {

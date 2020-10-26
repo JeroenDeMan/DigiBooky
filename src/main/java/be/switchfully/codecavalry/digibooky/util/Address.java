@@ -16,8 +16,8 @@ public class Address {
     }
 
     public Address(String city, Integer postalCode) {
-        this.street = "";
-        this.streetNumber = "";
+        this.street = "NOT PROVIDED";
+        this.streetNumber = "NOT PROVIDED";
         this.city = city;
         isPostalCodeValid(postalCode);
     }

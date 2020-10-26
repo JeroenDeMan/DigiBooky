@@ -10,7 +10,7 @@ import java.util.*;
 @Repository
 public class LibrarianRepository {
 
-    private final Map<SocialSecurityNumber, Librarian> librarians;
+    private final Map<String, Librarian> librarians;
 
     public LibrarianRepository() {
         this.librarians = new HashMap<>();
@@ -19,7 +19,7 @@ public class LibrarianRepository {
     public Librarian save(Librarian librarian) {
         if (librarians.containsValue(librarian))
             throw new LibrarianAlreadyExistException(librarian.getFirstname() + librarian.getLastname());
-        librarians.put(librarian.getSocialSecurityNumber(), librarian);
+        librarians.put(librarian.getId(), librarian);
 
         return librarian;
     }

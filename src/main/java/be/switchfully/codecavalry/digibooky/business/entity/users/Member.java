@@ -1,6 +1,5 @@
 package be.switchfully.codecavalry.digibooky.business.entity.users;
 
-import be.switchfully.codecavalry.digibooky.api.MemberController;
 import be.switchfully.codecavalry.digibooky.util.Address;
 import be.switchfully.codecavalry.digibooky.util.MailAddress;
 import be.switchfully.codecavalry.digibooky.util.SocialSecurityNumber;

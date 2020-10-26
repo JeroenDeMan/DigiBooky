@@ -28,7 +28,8 @@ class AdminServiceTest {
 
     @Test
     public void saveAdminDTO_ReturnsSameAdminDTO(){
-        Assertions.assertEquals(result, service.save(result));
+        AdminDTO expected = service.save(result);
+        Assertions.assertTrue(service.getAllAdmins().contains(expected));
     }
 
     @Test

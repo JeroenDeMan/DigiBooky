@@ -32,7 +32,7 @@ class BookServiceTest {
 
         bookService.registerBook(bookDTO);
 
-        BookDTOCompactOverview summier = bookService.getBookmapper().overviewDTO(bookService.
+        BookDTOCompactOverview summier = bookService.getBookMapper().overviewDTO(bookService.
                 getBookRepository().getBook(1110987654321L));
 
         Assertions.assertTrue(bookService.getBooksByPartialIsbn("1109").contains(summier));
@@ -52,7 +52,7 @@ class BookServiceTest {
 
         bookService.registerBook(bookDTO);
 
-        BookDTOCompactOverview summier = bookService.getBookmapper().overviewDTO(bookService.
+        BookDTOCompactOverview summier = bookService.getBookMapper().overviewDTO(bookService.
                 getBookRepository().getBook(1110987654321L));
         Assertions.assertTrue(bookService.getBookByTitle("Java").contains(summier));
     }
@@ -71,7 +71,7 @@ class BookServiceTest {
 
         bookService.registerBook(bookDTO);
 
-        BookDTOCompactOverview summier = bookService.getBookmapper().overviewDTO(bookService.
+        BookDTOCompactOverview summier = bookService.getBookMapper().overviewDTO(bookService.
                 getBookRepository().getBook(1110987654321L));
         Assertions.assertTrue(bookService.getBookByTitle("java").contains(summier));
     }
@@ -81,7 +81,7 @@ class BookServiceTest {
 
         bookService.registerBook(bookDTO);
 
-        BookDTOCompactOverview summier = bookService.getBookmapper().overviewDTO(bookService.
+        BookDTOCompactOverview summier = bookService.getBookMapper().overviewDTO(bookService.
                 getBookRepository().getBook(1110987654321L));
         Assertions.assertTrue(bookService.getBookByAuthor("Pas").contains(summier));
 
@@ -101,7 +101,7 @@ class BookServiceTest {
 
         bookService.registerBook(bookDTO);
 
-        BookDTOCompactOverview summier = bookService.getBookmapper().overviewDTO(bookService.
+        BookDTOCompactOverview summier = bookService.getBookMapper().overviewDTO(bookService.
                 getBookRepository().getBook(1110987654321L));
         Assertions.assertTrue(bookService.getBookByAuthor("pas").contains(summier));
 

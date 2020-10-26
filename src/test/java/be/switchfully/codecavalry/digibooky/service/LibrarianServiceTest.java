@@ -28,7 +28,8 @@ class LibrarianServiceTest {
 
     @Test
     public void saveLibrarianDTO_ReturnsSameLibrarianDTO(){
-        Assertions.assertEquals(result, service.save(result));
+        LibrarianDTO expected = service.save(result);
+        Assertions.assertTrue(service.getAllLibrarians().contains(expected));
     }
 
     @Test

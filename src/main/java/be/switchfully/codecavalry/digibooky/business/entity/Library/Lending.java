@@ -10,12 +10,12 @@ public class Lending {
 
     public static final Long TIME_TO_LEND=3L;
     private final String Id;
-    private final SocialSecurityNumber memberId;
+    private final String memberId;
     private final Long isbn;
     private LocalDate dateOfLending;
     private LocalDate dateOfReturning;
 
-    public Lending(SocialSecurityNumber memberId, Long isbn) {
+    public Lending(String memberId, Long isbn) {
         this.Id = UUID.randomUUID().toString();
         this.memberId = memberId;
         this.isbn = isbn;
@@ -27,7 +27,7 @@ public class Lending {
         return Id;
     }
 
-    public SocialSecurityNumber getMemberId() {
+    public String getMemberId() {
         return memberId;
     }
 

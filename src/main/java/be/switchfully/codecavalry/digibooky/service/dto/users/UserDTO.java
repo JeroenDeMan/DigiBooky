@@ -8,6 +8,7 @@ import java.util.Objects;
 
 public abstract class UserDTO {
 
+    private String id;
     private String socialSecurityNumber;
     private String firstName;
     private String lastName;
@@ -50,17 +51,26 @@ public abstract class UserDTO {
 
     public void setUsertype(Usertype usertype) { this.usertype = usertype; }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserDTO userDTO = (UserDTO) o;
-        return Objects.equals(socialSecurityNumber, userDTO.socialSecurityNumber) &&
+        return Objects.equals(id, userDTO.id) &&
+                Objects.equals(socialSecurityNumber, userDTO.socialSecurityNumber) &&
                 Objects.equals(mailAddress, userDTO.mailAddress);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(socialSecurityNumber, mailAddress);
+        return Objects.hash(id, socialSecurityNumber, mailAddress);
     }
 }

@@ -17,7 +17,7 @@ import java.util.Map;
 @Repository
 public class MemberRepository {
 
-    private Map<SocialSecurityNumber, Member> members;
+    private Map<String, Member> members;
 
     public MemberRepository() {
         this.members = new HashMap<>();
@@ -28,12 +28,12 @@ public class MemberRepository {
         Member member = new Member(new SocialSecurityNumber("671220-333-73"), "Pascal", "Baelen",
                 new MailAddress("pascal.baelen@live.com"),
                 new Address("Fakestreet", "95", "Geraardsbergen", 9500));
-        members.put(member.getSocialSecurityNumber(), member);
+        members.put(member.getId(), member);
     }
 
     public Member save(Member member){
         if(members.containsValue(member)) throw new MemberAlreadyExist(member.getFirstname() + member.getLastname());
-         members.put(member.getSocialSecurityNumber(), member);
+         members.put(member.getId(), member);
 
          return member;
     }
@@ -42,7 +42,7 @@ public class MemberRepository {
         return new ArrayList<>(members.values());
     }
 
-    public Map<SocialSecurityNumber, Member> getMemberMap ()
+    public Map<String, Member> getMemberMap ()
     {
         return members;
     }

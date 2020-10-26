@@ -26,22 +26,24 @@ public class BookController {
         return bookService.getAllBookDTOs();
     }
 
-    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/{isbn}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public BookDTO getSpecificBook(@PathVariable long id) {
-        return bookService.getBookDetailsById(id);
+    public BookDTO getSpecificBook(@PathVariable long isbn) {
+        return bookService.getBookDetailsById(isbn);
     }
 
-    @GetMapping(path = "/findByIsbn/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/findByIsbn/{isbn}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public List<BookDTOCompactOverview> bookDTO(@PathVariable String id) {
-        return bookService.getBooksByPartialIsbn(id);
+    public List<BookDTOCompactOverview> bookDTO(@PathVariable String isbn) {
+        return bookService.getBooksByPartialIsbn(isbn);
     }
+
     @GetMapping(path = "/findByTitle/{title}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<BookDTOCompactOverview> getbookbyTitle(@PathVariable String title) {
         return bookService.getBookByTitle(title);
     }
+
     @GetMapping(path = "/findByAuthor/{author}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<BookDTOCompactOverview> getbookbyAuthor(@PathVariable String author) {
@@ -49,9 +51,9 @@ public class BookController {
     }
 
     @PostMapping(path = "/librarian", produces = MediaType.APPLICATION_JSON_VALUE,
-    consumes = MediaType.APPLICATION_JSON_VALUE)
+            consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public BookDTO createbook(@RequestBody BookDTO bookDTO) {
+    public BookDTO createBook(@RequestBody BookDTO bookDTO) {
         return bookService.registerBook(bookDTO);
     }
 
@@ -59,7 +61,7 @@ public class BookController {
             consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public BookDTO updateBook(@PathVariable long isbn, @RequestBody BookDTO bookDTO) {
-        return bookService.updateBook(isbn,bookDTO);
+        return bookService.updateBook(isbn, bookDTO);
     }
 
     @DeleteMapping(path = "/librarian/{isbn}", produces = MediaType.APPLICATION_JSON_VALUE)

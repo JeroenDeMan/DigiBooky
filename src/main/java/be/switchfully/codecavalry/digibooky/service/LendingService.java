@@ -32,7 +32,7 @@ public class LendingService {
     }
 
     private LendingDTO addMemberName(LendingDTO lendingDTO) {
-        MemberDTO member = memberService.getOneMemberByInss(new SocialSecurityNumber(lendingDTO.getMemberId()));
+        MemberDTO member = memberService.getOneMemberByInss(lendingDTO.getMemberId());
         lendingDTO.setMemberName(member.getFirstName()+" "+member.getLastName());
         return lendingDTO;
     }

@@ -31,7 +31,7 @@ public class MemberMapper {
 
     public MemberDTO toDTO(Member member){
         MemberDTO result = new MemberDTO();
-
+        result.setId(member.getId());
         result.setSocialSecurityNumber(member.getSocialSecurityNumber().getSocialSecurityNumber());
         result.setFirstName(member.getFirstname());
         result.setLastName(member.getLastname());
@@ -47,7 +47,7 @@ public class MemberMapper {
 
     public MemberDTO toRestrictedDTO(Member member){
         MemberDTO result = new MemberDTO();
-
+        result.setId(member.getId());
         result.setSocialSecurityNumber("Nice try Karel, you don't have access!");
         result.setFirstName(member.getFirstname());
         result.setLastName(member.getLastname());

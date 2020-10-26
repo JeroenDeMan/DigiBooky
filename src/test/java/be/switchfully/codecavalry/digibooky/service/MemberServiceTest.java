@@ -33,7 +33,8 @@ class MemberServiceTest {
 
     @Test
     public void saveMemberDTO_ReturnsSameMemberDTO(){
-        Assertions.assertEquals(result, service.save(result));
+        MemberDTO expected = service.save(result);
+        Assertions.assertTrue(service.getAllMembers().contains(expected));
     }
 
     @Test
