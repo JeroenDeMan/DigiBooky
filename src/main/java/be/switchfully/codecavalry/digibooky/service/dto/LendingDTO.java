@@ -1,5 +1,7 @@
 package be.switchfully.codecavalry.digibooky.service.dto;
 
+import java.util.Objects;
+
 public class LendingDTO {
 
     private Long bookId;
@@ -64,5 +66,18 @@ public class LendingDTO {
 
     public void setDateOfReturn(String dateOfReturn) {
         this.dateOfReturn = dateOfReturn;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LendingDTO that = (LendingDTO) o;
+        return Objects.equals(lendingId, that.lendingId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(lendingId);
     }
 }
